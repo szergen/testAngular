@@ -1,0 +1,43 @@
+<section class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="form-group">
+              <select class="form-control" id="myLists" ng-model="currentSelection">
+                <option ng-repeat="lists in myLists">{{lists}}</option>
+              </select>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <a class="btn btn-primary" ng-href="#/newList">Adauga Lista</a>
+        </div>
+    </div><br/>
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="checkbox" ng-repeat="item in myToDos | filter:currentSelection">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <label>
+                            <input type="checkbox" ng-model="item.status">{{item.nume}} 
+                        </label>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-default" ng-click="stergeToDo($index)">Sterge</button>
+                    </div>
+                </div>
+            </div>
+                    
+                      <form ng-submit="adaugaToDo()" class="form-inline">
+                            <input type="text" class="form-control" ng-model="adaugaVal" placeholder="Add New">
+                            <input type="submit" value="Add New" class="btn btn-success">
+                      </form>     
+        </div>
+    </div><br/>
+    <div class="col-sm">
+                    <form>
+            Filtre
+            <input type="radio" ng-model="currentSelection" value="">Toate
+            <input type="radio" ng-model="currentSelection" value="true">Rezolvate
+            <input type="radio" ng-model="currentSelection" value="false">Nerezolvate
+            </form>
+    </div>
+</section>
